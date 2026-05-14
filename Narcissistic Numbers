@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int original = n;
+
+        int Size = String.valueOf(n).length();
+        int result = 0;
+        while(n > 0){
+            int lastDigit = n % 10;
+             result += Math.pow(lastDigit,Size);
+            n = n / 10;
+        }
+        if(original == result) System.out.println("Yes");
+        else System.out.println("No");
+    }
+}
