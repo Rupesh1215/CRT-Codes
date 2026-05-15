@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    
+    static final long MOD = 1000000007;
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Main. */
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int primes = 0;
+        
+        for(int i = 2; i <= n; i++){
+            if(isPrime(i)){
+                primes++;
+            }
+        }
+
+        int permu = n - primes;
+        long fact1 = factorial(permu);
+        long fact2 = factorial(primes);
+
+        System.out.println((fact1 * fact2) % MOD);
+
+    }
+
+    public static boolean isPrime(int n){
+        if(n < 2) return false;
+
+        for(int i = 2; i * i <= n; i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static long factorial(int n){
+        long fact = 1;
+        for(int i = 1;i <= n; i++){
+            fact = (fact * i) % MOD;
+        }
+
+        return fact;
+    }
+
+    
+}
